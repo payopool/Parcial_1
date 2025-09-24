@@ -19,7 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\gestorTicket.h" />
     <ClInclude Include="include\Header.h" />
+    <ClInclude Include="include\Ticket.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\mainParcial.cpp" />
