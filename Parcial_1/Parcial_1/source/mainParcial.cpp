@@ -5,7 +5,7 @@ int main() {
 	gestorTicket gestor;
 	int opcion;
 	do {
-		system("cls)");
+		system("cls"); // Limpiar pantalla
 		std::cout << "Menu:\n";
 		std::cout << "1. Agregar Ticket\n";
 		std::cout << "2. Mostrar Tickets\n";
@@ -14,7 +14,9 @@ int main() {
 		std::cout << "5. Salir\n";
 		std::cout << "Seleccione una opcion: ";
 		std::cin >> opcion;
+
 		std::cin.ignore(); // Limpiar 
+
 		switch(opcion) {
 			case 1:
 				gestor.agregarTicket();
@@ -37,12 +39,14 @@ int main() {
 				break;
 			}
 			case 5:
-				std::cout << "Saliendo...\n";
+				std::cout << "Saliendo\n";
 				break;
 			default:
-				std::cout << "Opcion invalida. Intente de nuevo.\n";
-				system("pause");
+				std::cout << "Opcion invalida\n";
+				
+				
 		}
+		system("pause");
 	} while (opcion != 5);
 		return 0;
 	}

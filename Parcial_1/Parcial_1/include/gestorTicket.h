@@ -5,6 +5,7 @@ class gestorTicket {
 public:
 	gestorTicket() = default;
 	~gestorTicket() = default;
+
 	void agregarTicket(){
 		std::string id, descripcion, titulo, fecha, estado;
 		std::cout << "id: "; 
@@ -17,12 +18,14 @@ public:
 		std::getline(std::cin, fecha);
 		std::cout << "estado: ";
 		std::getline(std::cin, estado);
+
 		Ticket nuevoTicket(id, descripcion, titulo, fecha, estado);
 		nuevoTicket.setId(id);
-		tickets.push_back(nuevoTicket);
+		tickets.push_back(nuevoTicket); // Agregar el ticket 
 	}
+
 	void mostrarTickets() const {
-		if (tickets.empty()) {
+		if (tickets.empty()) { //Compreba que este vacio
 			std::cout << "No hay tickets disponibles.\n";
 			return;
 		}
@@ -31,16 +34,18 @@ public:
 			std::cout << "---------------------\n";
 		}
 	}
+
 	void eliminarTicket(const std::string& id) {
-		for(auto it = tickets.begin(); it != tickets.end(); ++it) {
+		for (auto it = tickets.begin(); it != tickets.end(); ++it) {//Busca el ticket por id
 			if(it->getId() == id) {
-				tickets.erase(it);
+				tickets.erase(it); // Eliminar el ticket 
 				std::cout << "Ticket con ID " << id << " eliminado.\n";
 				return;
 			}
 		}
 	
 	}
+
 	void editarTicket(const std::string& id) {
 		for(auto& ticket : tickets) {
 			if(ticket.getId() == id) {
