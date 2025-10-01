@@ -8,13 +8,13 @@ public:
 
 	void agregarTicket(){
 		std::string id, descripcion, titulo, fecha, estado;
-		std::cout << "id: "; 
+		std::cout << "id (solo numeros): "; 
 		std::getline(std::cin, id);
-		std::cout << "descripcion: ";
+		std::cout << "descripcion de la compra: ";
 		std::getline(std::cin, descripcion);
 		std::cout << "titulo: ";
 		std::getline(std::cin, titulo);
-		std::cout << "fecha: ";
+		std::cout << "fecha(dia/mes/año: ";
 		std::getline(std::cin, fecha);
 		std::cout << "estado: ";
 		std::getline(std::cin, estado);
