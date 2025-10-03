@@ -2,12 +2,28 @@
 #include"Header.h"
 #include"Ticket.h"
 
+/**
+ * @class gestorTicket
+ * @brief Clase encargada de gestionar una colección de tickets.
+ */
 class gestorTicket {
 public:
-	gestorTicket() = default; // Constructor por defecto
-	~gestorTicket() = default; // Destructor por defecto
+	/**
+	 * @brief Constructor por defecto.
+	 */
+	gestorTicket() = default;
 
-	// Agrega un nuevo ticket solicitando datos por consola
+	/**
+	 * @brief Destructor por defecto.
+	 */
+	~gestorTicket() = default;
+
+	/**
+	 * @brief Solicita datos al usuario y agrega un nuevo ticket.
+	 *
+	 * Pide al usuario los campos necesarios para crear un ticket
+	 * y lo agrega al vector de tickets.
+	 */
 	void agregarTicket() {
 		std::string id, descripcion, titulo, fecha, estado;
 
@@ -27,34 +43,44 @@ public:
 		std::getline(std::cin, estado);
 
 		Ticket nuevoTicket(id, descripcion, titulo, fecha, estado);
-		nuevoTicket.setId(id); // Establece el ID
-		tickets.push_back(nuevoTicket); // Agregar el ticket al vector
+		nuevoTicket.setId(id); ///< Establece el ID
+		tickets.push_back(nuevoTicket); ///< Agrega el ticket al vector
 	}
 
-	// Muestra todos los tickets almacenados
+	/**
+	 * @brief Muestra todos los tickets almacenados.
+	 *
+	 * Recorre el vector de tickets y muestra sus datos en consola.
+	 */
 	void mostrarTickets() const {
-		if (tickets.empty()) { // Comprueba que el vector esté vacío
+		if (tickets.empty()) { ///< Comprueba que el vector esté vacío
 			std::cout << "No hay tickets disponibles.\n";
 			return;
 		}
 		for (const auto& ticket : tickets) {
-			ticket.mostrarTicket(); // Muestra los datos del ticket
+			ticket.mostrarTicket(); ///< Muestra los datos del ticket
 			std::cout << "---------------------\n";
 		}
 	}
 
-	// Elimina un ticket por su ID
+	/**
+	 * @brief Elimina un ticket por su ID.
+	 * @param id ID del ticket a eliminar.
+	 */
 	void eliminarTicket(const std::string& id) {
-		for (auto it = tickets.begin(); it != tickets.end(); ++it) { // Busca el ticket por ID
+		for (auto it = tickets.begin(); it != tickets.end(); ++it) { ///< Busca el ticket por ID
 			if (it->getId() == id) {
-				tickets.erase(it); // Eliminar el ticket del vector
+				tickets.erase(it); ///< Elimina el ticket del vector
 				std::cout << "Ticket con ID " << id << " eliminado.\n";
 				return;
 			}
 		}
 	}
 
-	// Edita los datos de un ticket existente
+	/**
+	 * @brief Edita los datos de un ticket existente.
+	 * @param id ID del ticket a editar.
+	 */
 	void editarTicket(const std::string& id) {
 		for (auto& ticket : tickets) {
 			if (ticket.getId() == id) {
@@ -72,10 +98,10 @@ public:
 				std::cout << "Nuevo estado: ";
 				std::getline(std::cin, estado);
 
-				ticket.setDescripcion(descripcion); // Actualiza descripción
-				ticket.setTitulo(titulo);           // Actualiza título
-				ticket.setFecha(fecha);             // Actualiza fecha
-				ticket.setEstado(estado);           // Actualiza estado
+				ticket.setDescripcion(descripcion); ///< Actualiza descripción
+				ticket.setTitulo(titulo);           ///< Actualiza título
+				ticket.setFecha(fecha);             ///< Actualiza fecha
+				ticket.setEstado(estado);           ///< Actualiza estado
 
 				std::cout << "Ticket con ID " << id << " editado.\n";
 				return;
@@ -85,5 +111,5 @@ public:
 	}
 
 private:
-	std::vector<Ticket> tickets; // Vector que almacena los tickets
+	std::vector<Ticket> tickets; ///< Vector que almacena los tickets
 };
